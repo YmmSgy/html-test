@@ -5,5 +5,6 @@ Repo to test html stuff
 ### hello
 - Simple hello world example
 
-### whackamole
-- Whack-a-mole game in HTML/JS
+### games
+Self-made browser games in HTML/JS
+- Whack-a-mole game
