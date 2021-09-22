@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: gainsboro;
+}
+
+.nodisp {
+  display: none;
+}
+
+/*
+header contains both save button and fname
+*/
+#hdr {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+#save {
+  flex: 0 0 auto;
+}
+
+#fname {
+  flex: 1 1 auto;
+}
+
+#fcont {
+  flex: 1 1 auto;
+  height: 100%;
+  resize: none;
+}

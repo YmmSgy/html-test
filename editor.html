@@ -4,13 +4,16 @@
     <title>Text Editor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="editor.css">
   </head>
   <body>
-    <button id="save">Save</button>
-    <br><label for="fname">File Name:</label>
-    <br><input type="text" id="fname"></input>
-    <br><label for="fcont">Text:</label>
-    <br><textarea id="fcont"></textarea>
+    <div id="hdr">
+      <button id="save">Save</button>
+      <label for="fname" class="nodisp">File Name:</label>
+      <input type="text" id="fname"></input>
+    </div>
+    <label for="fcont" class="nodisp">Text:</label>
+    <textarea id="fcont"></textarea>
     <script src="editor.js"></script>
   </body>
 </html>
