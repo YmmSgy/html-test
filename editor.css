@@ -42,4 +42,5 @@ header contains both save button and fname
   flex: 1 1 auto;
   height: 100%;
   resize: none;
+  white-space: nowrap;
 }
