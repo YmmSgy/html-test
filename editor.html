@@ -8,14 +8,28 @@
   </head>
   <body>
     <!-- header banner -->
-    <div id="hdr">
-      <button id="save">Save</button>
+    <div class="hdr">
+      <button id="menu" class="menu">≡<button>
       <label for="fname" class="nodisp">File Name</label>
-      <input type="text" id="fname" value="unknown.txt"></input>
+      <input type="text" id="fname" class="fname" value="unknown.txt"></input>
     </div>
-    <!-- file content textarea -->
-    <label for="fcont" class="nodisp">Text</label>
-    <textarea id="fcont"></textarea>
+    <!-- main content -->
+    <div class="cnt">
+      <!-- file content textarea -->
+      <div class="fcont-wrapper">
+        <label for="fcont" class="nodisp">Text</label>
+        <textarea id="fcont" class="fcont" autofocus></textarea>
+      </div>
+      <!-- options sidebar -->
+      <div id="sidebar" class="sidebar">
+        <button id="save">Save file</button>
+        <button id="open">Open file</button>
+        <button id="dark">Dark mode</button>
+        <button id="font">Font size</button>
+        <button id="hl">Syntax highlighting</button>
+        <button id="indent">Auto indenting</button>
+      </div>
+    </div>
     <!-- script -->
     <script src="editor.js"></script>
   </body>
