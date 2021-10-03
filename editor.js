@@ -6,15 +6,16 @@ const menu = document.getElementById("menu");
 // dropdown
 const dropdown = document.getElementById("dropdown");
 const save = document.getElementById("save");
+const dark = document.getElementById("dark");
 /*
 const open = document.getElementById("open");
-const dark = document getElementById("dark");
 const font = document.getElementById("font");
 const hl = document.getElementById("hl");
 const indent = document.getElementById("indent");
 */
 // globals
 let isDropdownOpen = false;
+let isDark = false; swaptheme("light");
 
 // define functions
 function getvar(name) {
@@ -28,22 +29,20 @@ function setvar(name, value) {
       .setProperty(name, value);
 }
 
-function openDropdown() {
-    fname.setAttribute("disabled", "");
-    fcont.setAttribute("disabled", "");
-    menu.style.backgroundColor = getvar("--dd-clr");
-    dropdown.style.height = "100%";
+function opendropdown(canOpen) {
     dropdown.style.overflowY = "hidden";
-    isDropdownOpen = true;
-}
-
-function closeDropdown() {
-    fname.removeAttribute("disabled");
-    fcont.removeAttribute("disabled");
-    menu.style.backgroundColor = "transparent";
-    dropdown.style.height = "0";
-    dropdown.style.overflowY = "hidden";
-    isDropdownOpen = false;
+    if (canOpen) {
+        fname.setAttribute("disabled", "");
+        fcont.setAttribute("disabled", "");
+        menu.style.setProperty("background-color", "var(--dd-clr)");
+        dropdown.style.height = "100%";
+    }
+    else {
+        fname.removeAttribute("disabled");
+        fcont.removeAttribute("disabled");
+        menu.style.setProperty("background-color", "transparent");
+        dropdown.style.height = "0";
+    }
 }
 
 function download() {
@@ -64,10 +63,47 @@ function download() {
     document.body.removeChild(dl);
 }
 
+function swaptheme(theme) {
+    if (theme === "light") {
+        // background colour
+        setvar("--bkg-clr", "white");
+        // text colour
+        setvar("--txt-clr", "black");
+        // disabled text colour
+        setvar("--dis-clr", "dimgray");
+        // highlight colour
+        setvar("--hl-clr", "silver");
+        // header colour
+        setvar("--hdr-clr", "#d2d2d2");
+        // dropdown colour
+        setvar("--dd-clr", "#e9e9e9");
+    }
+    else {
+        // background colour
+        setvar("--bkg-clr", "#272b33");
+        // text colour
+        setvar("--txt-clr", "white");
+        // disabled text colour
+        setvar("--dis-clr", "#7488ad");
+        // highlight colour
+        setvar("--hl-clr", "#48546b");
+        // header colour
+        setvar("--hdr-clr", "#3a455a");
+        // dropdown colour
+        setvar("--dd-clr", "#323947");
+    }
+}
+
 // bind event handlers
 menu.onclick = () => {
-    if (isDropdownOpen) { closeDropdown(); }
-    else { openDropdown(); }
+    if (isDropdownOpen) { opendropdown(false); }
+    else { opendropdown(true); }
+    isDropdownOpen = !isDropdownOpen;
 };
 dropdown.ontransitionend = () => dropdown.style.overflowY = "auto";
 save.onclick = download;
+dark.onclick = () => {
+    if (isDark) { swaptheme("light"); }
+    else { swaptheme("dark"); }
+    isDark = !isDark;
+}
