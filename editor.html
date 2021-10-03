@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Text Editor</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="dropdown.css">
     <link rel="stylesheet" href="editor.css">
+    <title>Text Editor</title>
   </head>
   <body>
     <!-- header banner -->
     <div class="hdr">
-      <button id="menu" class="menu">≡<button>
-      <label for="fname" class="nodisp">File Name</label>
-      <input type="text" id="fname" class="fname" value="unknown.txt"></input>
+      <div class="sqr-btn"><button id="menu">≡</button></div>
+      <div class="title">
+        <label for="fname">File Name</label>
+        <input type="text" id="fname" value="unknown.txt"></input>
+      </div>
     </div>
     <!-- main content -->
     <div class="cnt">
       <!-- file content textarea -->
-      <div class="fcont-wrapper">
-        <label for="fcont" class="nodisp">Text</label>
+      <div class="textarea-wrapper">
+        <label for="fcont">File Content</label>
         <textarea id="fcont" class="fcont" autofocus></textarea>
       </div>
-      <!-- options sidebar -->
-      <div id="sidebar" class="sidebar">
-        <button id="save">Save file</button>
-        <button id="open">Open file</button>
-        <button id="dark">Dark mode</button>
-        <button id="font">Font size</button>
-        <button id="hl">Syntax highlighting</button>
-        <button id="indent">Auto indenting</button>
+      <!-- dropdown menu -->
+      <div id="dropdown" class="dropdown">
+        <div class="dd-item"><button id="save">Save file</button></div>
+        <div class="dd-item"><button id="open">Open file</button></div>
+        <div class="dd-item"><button id="dark">Dark mode</button></div>
+        <div class="dd-item"><button id="font">Font size</button></div>
+        <div class="dd-item"><button id="hl">Syntax highlighting</button></div>
+        <div class="dd-item"><button id="indent">Auto indenting</button></div>
       </div>
     </div>
     <!-- script -->

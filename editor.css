@@ -1,145 +1,23 @@
-:root {
-  --hdr-ht: 3rem;
-  --lr-pdg: 1rem;
-  --dis-clr: dimgray;
-  --bkg-clr: white;
-  --hl-clr: silver;
-  --hdr-clr: #d2d2d2;
-  --sbr-clr: #e9e9e9;
-  --test: yeehaw;
-}
-
-* {
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: medium;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.2s;
-}
-
-html {
-  min-height: 100%;
-  min-width: 100%;
-  
-}
-
-body {
-  /* height and width fit screen */
-  height: 100%;
-  width: 100%;
-  /* fix position relative to browser
-  window, i.e. no scroll */
-  position: fixed;
-  background-color: var(--bkg-clr);
-  /* flex container */
-  display: flex;
-  flex-direction: column;
-}
-
-.nodisp {
-  display: none;
-}
-
-:disabled {
-  color: var(--dis-clr);
-}
-
-button:hover {
-  background-color: var(--hl-clr);
-}
-
-/* header contains both menu button and
-fname */
-.hdr {
-  /* flex item. no grow or shrink,
-  dimensions fixed */
-  flex: 0 0 auto;
-  /* height fixed, width
-  match parent */
-  height: var(--hdr-ht);
-  min-width: 100%;
-  /* flex container */
-  display: flex;
-  /* theme overrides */
-  background-color: var(--hdr-clr);
-  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-}
-
-.hdr * {
-  font-size: large;
-}
-
-.hdr .menu {
-  /* flex item. no shrink or grow,
-  dimension fit content */
-  flex: 0 0 var(--hdr-ht);
-}
-
-.hdr .fname {
-  /* flex item. allow shrink or grow,
-  dimension fit content */
-  flex: 1 1 auto;
+.title > input {
+  /* fixed padding */
   padding: 0 var(--lr-pdg);
+  text-align: left;
 }
 
-/* main content area */
-.cnt {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-/* main text editing area */
-.cnt .fcont-wrapper {
+/* creates an 8px border around the textarea */
+.cnt > .textarea-wrapper {
   padding: 8px;
   flex: 1 1 auto;
+  /* flex container */
   display: flex;
 }
 
-.fcont {
-  /* no margin, 8px padding, height and
-  width fill available space */
+.textarea-wrapper > .fcont {
+  /* height and width fill available
+  space */
   flex: 1 1 auto;
   /* textarea-specific. no resizing, no
   word wrap */
   resize: none;
   white-space: nowrap;
-}
-
-/* sidebar */
-.cnt .sidebar {
-  /* width match parent, height 0 (by
-  default) */
-  width: 100%;
-  height: 0;
-  /* position to the top */
-  position: absolute;
-  top: 0;
-  /* sidebar specific. always show on top,
-  hide overflow */
-  z-index: 1;
-  overflow-y: hidden;
-  background-color: var(--sbr-clr);
-  /* flex container */
-  display: flex;
-  flex-direction: column;
-  /* transition */
-  transition: height 0.5s;
-}
-
-.sidebar button {
-  /* fixed padding, height fit content,
-  width fill to max of parent */
-  flex: 0 0 auto;
-  padding: var(--lr-pdg);
-  width: 100%;
-  display: block;
-  text-align: left;
-  text-size: large;
-  border-bottom: 1px solid var(--hl-clr);
 }

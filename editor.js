@@ -3,8 +3,8 @@ const fname = document.getElementById("fname");
 const fcont = document.getElementById("fcont");
 // menu button
 const menu = document.getElementById("menu");
-// sidebar
-const sidebar = document.getElementById("sidebar");
+// dropdown
+const dropdown = document.getElementById("dropdown");
 const save = document.getElementById("save");
 /*
 const open = document.getElementById("open");
@@ -14,8 +14,9 @@ const hl = document.getElementById("hl");
 const indent = document.getElementById("indent");
 */
 // globals
-let isSidebarOpen = false;
+let isDropdownOpen = false;
 
+// define functions
 function getvar(name) {
     return getComputedStyle(
       document.documentElement)
@@ -27,20 +28,22 @@ function setvar(name, value) {
       .setProperty(name, value);
 }
 
-function openSidebar() {
+function openDropdown() {
     fname.setAttribute("disabled", "");
     fcont.setAttribute("disabled", "");
-    menu.style.backgroundColor = getvar("--sbr-clr");
-    sidebar.style.height = "100%";
-    isSidebarOpen = true;
+    menu.style.backgroundColor = getvar("--dd-clr");
+    dropdown.style.height = "100%";
+    dropdown.style.overflowY = "hidden";
+    isDropdownOpen = true;
 }
 
-function closeSidebar() {
+function closeDropdown() {
     fname.removeAttribute("disabled");
     fcont.removeAttribute("disabled");
     menu.style.backgroundColor = "transparent";
-    sidebar.style.height = "0";
-    isSidebarOpen = false;
+    dropdown.style.height = "0";
+    dropdown.style.overflowY = "hidden";
+    isDropdownOpen = false;
 }
 
 function download() {
@@ -61,8 +64,10 @@ function download() {
     document.body.removeChild(dl);
 }
 
+// bind event handlers
 menu.onclick = () => {
-    if (isSidebarOpen) { closeSidebar(); }
-    else { openSidebar(); }
+    if (isDropdownOpen) { closeDropdown(); }
+    else { openDropdown(); }
 };
+dropdown.ontransitionend = () => dropdown.style.overflowY = "auto";
 save.onclick = download;
