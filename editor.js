@@ -17,7 +17,10 @@ const indent = document.getElementById("indent");
 let isDropdownOpen = false;
 let isDark = false; swaptheme("light");
 
+
 // define functions
+
+// get and set css variables
 function getvar(name) {
     return getComputedStyle(
       document.documentElement)
@@ -29,6 +32,7 @@ function setvar(name, value) {
       .setProperty(name, value);
 }
 
+// dropdown
 function opendropdown(canOpen) {
     dropdown.style.overflowY = "hidden";
     if (canOpen) {
@@ -45,6 +49,7 @@ function opendropdown(canOpen) {
     }
 }
 
+// download
 function download() {
     // create fake anchor
     const dl = document.createElement("a");
@@ -63,6 +68,7 @@ function download() {
     document.body.removeChild(dl);
 }
 
+// theme
 function swaptheme(theme) {
     if (theme === "light") {
         // background colour
@@ -94,16 +100,23 @@ function swaptheme(theme) {
     }
 }
 
+
 // bind event handlers
+
+// menu button
 menu.onclick = () => {
     if (isDropdownOpen) { opendropdown(false); }
     else { opendropdown(true); }
     isDropdownOpen = !isDropdownOpen;
 };
 dropdown.ontransitionend = () => dropdown.style.overflowY = "auto";
+
+// save button
 save.onclick = download;
+
+// theme button
 dark.onclick = () => {
     if (isDark) { swaptheme("light"); }
     else { swaptheme("dark"); }
     isDark = !isDark;
-}
+};
