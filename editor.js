@@ -112,11 +112,19 @@ menu.onclick = () => {
 dropdown.ontransitionend = () => dropdown.style.overflowY = "auto";
 
 // save button
-save.onclick = download;
+save.onclick = () => {
+    download();
+
+    opendropdown(false);
+    isDropdownOpen = false;
+};
 
 // theme button
 dark.onclick = () => {
     if (isDark) { swaptheme("light"); }
     else { swaptheme("dark"); }
     isDark = !isDark;
+
+    opendropdown(false);
+    isDropdownOpen = false;
 };
