@@ -1,0 +1,23 @@
+.title > input {
+  /* fixed padding */
+  padding: 0 var(--lr-pdg);
+  text-align: left;
+}
+
+/* creates an 8px border around the textarea */
+.cnt > .textarea-wrapper {
+  padding: 8px;
+  flex: 1 1 auto;
+  /* flex container */
+  display: flex;
+}
+
+.textarea-wrapper > .fcont {
+  /* height and width fill available
+  space */
+  flex: 1 1 auto;
+  /* textarea-specific. no resizing, no
+  word wrap */
+  resize: none;
+  white-space: nowrap;
+}
