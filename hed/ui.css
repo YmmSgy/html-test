@@ -83,7 +83,7 @@ button, input {
   font-size: large;
 }
 
-.hdr > .sqr-btn {
+.hdr > .hdr-btn {
   /* flex item. no shrink or grow,
   dimension square (length == height) */
   flex: 0 0 var(--hdr-ht);
