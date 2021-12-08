@@ -1,0 +1,118 @@
+:root {
+	--banner-height: 4rem;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	border: none;
+	outline: none;
+}
+html {
+	height: 100%;
+	width: 100%;
+}
+body {
+	/* main display is a flex container */
+	display: flex;
+	flex-direction: column;
+	height: inherit;
+	width: inherit;
+}
+
+
+.banner {
+	/* banner is fixed height */
+	flex: none;
+	height: var(--banner-height);
+
+	/* is a flex container */
+	display: flex;
+
+	/* colour & font */
+	background-color: silver;
+	font-size: 1.5rem;
+}
+	.menubutton {
+		/* menu button is a square (fixed width) */
+		flex: none;
+		width: var(--banner-height);
+
+		/* colour & font */
+		background-color: transparent;
+		font-size: inherit;
+		z-index: 1;
+	}
+	.filename {
+		/* file name field takes up the rest of the banner space */
+		flex: 1;
+		overflow: auto;
+		padding: 0 1rem;
+
+		/* colour & font */
+		background-color: transparent;
+		font-size: inherit;
+
+		/* transitions */
+		transition: all 0.2s;
+	}
+	.filename:hover {
+		background-color: darkgrey;
+	}
+
+
+.menu {
+	/* menu starts off invisible */
+	display: none;
+
+	/* menu can expand until equal to content height */
+	max-height: calc(100% - var(--banner-height));
+	max-width: 70%;
+
+	/* menu appears as an overlay */
+	position: absolute;
+	top: var(--banner-height);
+	z-index: 2;
+	overflow: auto;
+	list-style-type: none;
+	padding-inline-start: 0;
+	box-shadow: 0 0 0.5rem grey;
+
+	/* colour & font */
+	background-color: gainsboro;
+
+	/* transitions */
+	transition: all 0.2s;
+}
+	.menu > li > * {
+		/* each menu button */
+		height: var(--banner-height);
+		width: 100%;
+		padding: 0 2rem;
+		text-align: left;
+
+		/* colour & font */
+		background-color: transparent;
+		font-size: 1.2rem;
+
+		/* transitions */
+		transition: all 0.2s;
+	}
+	.menu > li > *:hover {
+		background-color: silver;
+	}
+
+
+.content {
+	/* content area starts at 100% screensize and shrinks to fit */
+	flex: 0 1 100%;
+}
+	.filecontent {
+		/* file content textbox */
+		height: 100%;
+		width: 100%;
+		border: solid 0.5rem white;
+		white-space: pre;
+		resize: none;
+		overflow: auto;
+	}
