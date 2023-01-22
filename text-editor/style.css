@@ -1,5 +1,5 @@
 :root {
-	--banner-height: 4rem;
+	--banner-height: 2.5rem;
 }
 
 * {
@@ -7,8 +7,9 @@
 	margin: 0;
 	border: none;
 	outline: none;
+	transition: all 0.2s;
 }
-html {
+html, body {
 	height: 100%;
 	width: 100%;
 }
@@ -16,8 +17,6 @@ body {
 	/* main display is a flex container */
 	display: flex;
 	flex-direction: column;
-	height: inherit;
-	width: inherit;
 }
 
 
@@ -31,7 +30,7 @@ body {
 
 	/* colour & font */
 	background-color: silver;
-	font-size: 1.5rem;
+	font-size: 1rem;
 }
 	#menubutton {
 		/* menu button is a square (fixed width) */
@@ -52,9 +51,6 @@ body {
 		/* colour & font */
 		background-color: transparent;
 		font-size: inherit;
-
-		/* transitions */
-		transition: all 0.2s;
 	}
 	#filename:hover {
 		background-color: darkgrey;
@@ -80,9 +76,6 @@ body {
 
 	/* colour & font */
 	background-color: gainsboro;
-
-	/* transitions */
-	transition: all 0.2s;
 }
 	#menu > li > * {
 		/* each menu button */
@@ -93,10 +86,7 @@ body {
 
 		/* colour & font */
 		background-color: transparent;
-		font-size: 1.2rem;
-
-		/* transitions */
-		transition: all 0.2s;
+		font-size: 1rem;
 	}
 	#menu > li > *:hover {
 		background-color: silver;
