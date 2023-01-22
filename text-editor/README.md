@@ -1,4 +1,4 @@
-# hed
+# text-editor
 A simple text editor in your browser
 ## How to use
 1. Enter file name in the top bar.
