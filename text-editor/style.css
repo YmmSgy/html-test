@@ -45,7 +45,7 @@ body {
 	}
 	#filename {
 		/* file name field takes up the rest of the banner space */
-		flex: 1;
+		flex: auto;
 		overflow: auto;
 		padding: 0 1rem;
 
@@ -104,13 +104,13 @@ body {
 
 
 #content {
-	/* content area starts at 100% screensize and shrinks to fit */
-	flex: 0 1 100%;
+	/* content area fills remaining space */
+	flex: auto;
+	display: flex;
 }
 	#filecontent {
 		/* file content textbox */
-		height: 100%;
-		width: 100%;
+		flex: auto;
 		border: solid 0.5rem white;
 		white-space: pre;
 		resize: none;
