@@ -21,7 +21,7 @@ body {
 }
 
 
-.banner {
+#banner {
 	/* banner is fixed height */
 	flex: none;
 	height: var(--banner-height);
@@ -33,7 +33,7 @@ body {
 	background-color: silver;
 	font-size: 1.5rem;
 }
-	.menubutton {
+	#menubutton {
 		/* menu button is a square (fixed width) */
 		flex: none;
 		width: var(--banner-height);
@@ -43,7 +43,7 @@ body {
 		font-size: inherit;
 		z-index: 1;
 	}
-	.filename {
+	#filename {
 		/* file name field takes up the rest of the banner space */
 		flex: 1;
 		overflow: auto;
@@ -56,12 +56,12 @@ body {
 		/* transitions */
 		transition: all 0.2s;
 	}
-	.filename:hover {
+	#filename:hover {
 		background-color: darkgrey;
 	}
 
 
-.menu {
+#menu {
 	/* menu starts off invisible */
 	display: none;
 
@@ -84,7 +84,7 @@ body {
 	/* transitions */
 	transition: all 0.2s;
 }
-	.menu > li > * {
+	#menu > li > * {
 		/* each menu button */
 		height: var(--banner-height);
 		width: 100%;
@@ -98,16 +98,16 @@ body {
 		/* transitions */
 		transition: all 0.2s;
 	}
-	.menu > li > *:hover {
+	#menu > li > *:hover {
 		background-color: silver;
 	}
 
 
-.content {
+#content {
 	/* content area starts at 100% screensize and shrinks to fit */
 	flex: 0 1 100%;
 }
-	.filecontent {
+	#filecontent {
 		/* file content textbox */
 		height: 100%;
 		width: 100%;

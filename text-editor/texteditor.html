@@ -7,11 +7,11 @@
     <title>Text Editor</title>
   </head>
   <body>
-    <div class="banner">
-      <button id="menubutton" class="menubutton">≡</button>
-      <input type="text" id="filename" class="filename" value="unknown.txt"></input>
+    <div id="banner">
+      <button id="menubutton">≡</button>
+      <input type="text" id="filename" value="unknown.txt"></input>
     </div>
-    <ul id="menu" class="menu">
+    <ul id="menu">
       <li><button id="menu-save">Save file</button></li>
       <li><button id="menu-open">Open file</button></li>
       <li><button id="menu-dark">Switch theme</button></li>
@@ -19,8 +19,8 @@
       <li><button id="menu-hl">Syntax highlighting</button></li>
       <li><button id="menu-indent">Auto indenting</button></li>
     </ul>
-    <div class="content">
-      <textarea id="filecontent" class="filecontent" autofocus></textarea>
+    <div id="content">
+      <textarea id="filecontent" autofocus></textarea>
     </div>
     <!-- script -->
     <script src="script.js"></script>
