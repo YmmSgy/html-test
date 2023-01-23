@@ -4,6 +4,9 @@ const menubutton = document.getElementById('menubutton');
 const menu = document.getElementById('menu');
 const curtain = document.getElementById('curtain');
 const menuClose = document.getElementById('menu-close');
+const filecontent = document.getElementById('filecontent');
+const filename = document.getElementById('filename');
+const savefile = document.getElementById('menu-save');
 
 let isMenuOpen = false;
 
@@ -25,6 +28,24 @@ function closeMenu() {
 	menu.classList.remove('opened-menu');
 }
 
+function downloadFile() {
+	// create blob and uri from file content
+	const blob = new Blob([filecontent.value, '\n'], {type: 'text/plain'});
+	const blobUri = URL.createObjectURL(blob);
+
+	// create fake download link, add it, click it, then remove it
+	const dlLink = document.createElement('a');
+	dlLink.download = filename.value;
+	dlLink.href = blobUri;
+	document.body.appendChild(dlLink);
+	dlLink.click();
+	document.body.removeChild(dlLink);
+
+	// remember to free blob uri
+	URL.revokeObjectURL(blobUri);
+}
+
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
+savefile.addEventListener('click', downloadFile);
