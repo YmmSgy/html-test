@@ -77,11 +77,10 @@ button {
 
 #menu {
 	display: block;
-	width: 40%;
 	height: 100%;
 
 	/* menu starts out-of-screen to the left */
-	left: -40%;
+	transform: translateX(-100%);
 
 	/* menu appears as an overlay */
 	position: absolute;

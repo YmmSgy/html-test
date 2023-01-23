@@ -12,7 +12,7 @@ function openMenu() {
 
 	curtain.style.zIndex = 1;
 	curtain.style.backgroundColor = "rgb(0 0 0 / .6)";
-	menu.style.left = "0";
+	menu.style.transform = "translateX(0)";
 	curtain.classList.toggle('curtain-fade-in');
 	curtain.classList.toggle('curtain-fade-out');
 }
@@ -22,7 +22,7 @@ function closeMenu() {
 
 	curtain.style.zIndex = -1;
 	curtain.style.backgroundColor = "transparent";
-	menu.style.left = "-40%";
+	menu.style.transform = "translateX(-100%)";
 	curtain.classList.toggle('curtain-fade-in');
 	curtain.classList.toggle('curtain-fade-out');
 }
