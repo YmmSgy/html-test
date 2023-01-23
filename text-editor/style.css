@@ -1,5 +1,6 @@
 :root {
 	--banner-height: 2.5rem;
+	--transition-time: 0.3s;
 }
 
 * {
@@ -7,7 +8,7 @@
 	margin: 0;
 	border: none;
 	outline: none;
-	transition: all 0.2s;
+	transition: all var(--transition-time);
 }
 html, body {
 	height: 100%;
@@ -17,6 +18,24 @@ body {
 	/* main display is a flex container */
 	display: flex;
 	flex-direction: column;
+}
+button {
+	cursor: pointer;
+}
+
+.curtain-fade-in {
+	transition: background-color var(--transition-time), z-index var(--transition-time) step-end;
+}
+.curtain-fade-out {
+	transition: background-color var(--transition-time), z-index var(--transition-time) step-start;
+}
+#curtain {
+	/* curtain starts off invisible and uninteractive */
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background-color: transparent;
 }
 
 
@@ -40,7 +59,6 @@ body {
 		/* colour & font */
 		background-color: transparent;
 		font-size: inherit;
-		z-index: 1;
 	}
 	#filename {
 		/* file name field takes up the rest of the banner space */
@@ -58,21 +76,20 @@ body {
 
 
 #menu {
-	/* menu starts off invisible */
-	display: none;
+	display: block;
+	width: 40%;
+	height: 100%;
 
-	/* menu can expand until equal to content height */
-	max-height: calc(100% - var(--banner-height));
-	max-width: 70%;
+	/* menu starts out-of-screen to the left */
+	left: -40%;
 
 	/* menu appears as an overlay */
 	position: absolute;
-	top: var(--banner-height);
 	z-index: 2;
-	overflow: auto;
+	overflow-x: hidden;
+	overflow-y: auto;
 	list-style-type: none;
 	padding-inline-start: 0;
-	box-shadow: 0 0 0.5rem grey;
 
 	/* colour & font */
 	background-color: gainsboro;
@@ -81,8 +98,9 @@ body {
 		/* each menu button */
 		height: var(--banner-height);
 		width: 100%;
-		padding: 0 2rem;
+		padding: 0 1rem;
 		text-align: left;
+		overflow: hidden;
 
 		/* colour & font */
 		background-color: transparent;
