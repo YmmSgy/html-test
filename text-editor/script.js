@@ -1,36 +1,30 @@
-"use strict";
+'use strict';
 
-const menubutton = document.getElementById("menubutton");
-const menu = document.getElementById("menu");
-const curtain = document.getElementById("curtain");
-const menuClose = document.getElementById("menu-close");
+const menubutton = document.getElementById('menubutton');
+const menu = document.getElementById('menu');
+const curtain = document.getElementById('curtain');
+const menuClose = document.getElementById('menu-close');
 
 let isMenuOpen = false;
 
 function openMenu() {
 	isMenuOpen = true;
 
-	curtain.style.zIndex = 1;
-	curtain.style.backgroundColor = "rgb(0 0 0 / .6)";
-	menu.style.transform = "translateX(0)";
-	curtain.classList.toggle('curtain-fade-in');
-	curtain.classList.toggle('curtain-fade-out');
+	curtain.classList.remove('closed-curtain');
+	menu.classList.remove('closed-menu');
+	curtain.classList.add('opened-curtain');
+	menu.classList.add('opened-menu')
 }
 
 function closeMenu() {
 	isMenuOpen = false;
 
-	curtain.style.zIndex = -1;
-	curtain.style.backgroundColor = "transparent";
-	menu.style.transform = "translateX(-100%)";
-	curtain.classList.toggle('curtain-fade-in');
-	curtain.classList.toggle('curtain-fade-out');
+	curtain.classList.add('closed-curtain');
+	menu.classList.add('closed-menu');
+	curtain.classList.remove('opened-curtain');
+	menu.classList.remove('opened-menu');
 }
 
-menubutton.addEventListener("click", openMenu);
-menuClose.addEventListener("click", closeMenu);
-curtain.addEventListener("click", closeMenu);
-
-function setvar(property, value) {
-	document.documentElement.style.setProperty(property, value);
-}
+menubutton.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+curtain.addEventListener('click', closeMenu);

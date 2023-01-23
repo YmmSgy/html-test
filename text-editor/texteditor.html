@@ -7,19 +7,19 @@
     <title>Text Editor</title>
   </head>
   <body>
-    <div id="curtain" class="curtain-fade-in"></div>
+    <div id="curtain" class="closed-curtain"></div>
     <div id="banner">
       <button id="menubutton">≡</button>
       <input type="text" id="filename" value="unknown.txt"></input>
     </div>
-    <ul id="menu">
-      <li><button id="menu-close">←</button></li>
-      <li><button id="menu-save">Save file</button></li>
-      <li><button id="menu-open">Open file</button></li>
-      <li><button id="menu-dark">Switch theme</button></li>
-      <li><button id="menu-font">Font size</button></li>
-      <li><button id="menu-hl">Syntax highlighting</button></li>
-      <li><button id="menu-indent">Auto indenting</button></li>
+    <ul id="menu" class="closed-menu">
+      <li><button id="menu-close">╳</button></li>
+      <li><button id="menu-save"><i class="icon">🖪</i> Save file</button></li>
+      <li><button id="menu-open"><i class="icon">🖿</i> Open file</button></li>
+      <li><button id="menu-dark"><i class="icon">🌣</i> Switch theme</button></li>
+      <li><button id="menu-font"><i class="icon">🗚</i> Font size</button></li>
+      <li><button id="menu-hl"><i class="icon">🛈</i> Syntax highlighting</button></li>
+      <li><button id="menu-indent"><i class="icon">⏵</i> Auto indenting</button></li>
     </ul>
     <div id="content">
       <textarea id="filecontent" spellcheck="false" autofocus></textarea>

@@ -1,6 +1,7 @@
 :root {
 	--banner-height: 2.5rem;
 	--transition-time: 0.3s;
+	--icon-width: 2rem;
 }
 
 * {
@@ -23,19 +24,30 @@ button {
 	cursor: pointer;
 }
 
-.curtain-fade-in {
-	transition: background-color var(--transition-time), z-index var(--transition-time) step-end;
+.icon {
+	font-style: normal;
+	display: inline-block;
+	height: var(--icon-width);
+	width: var(--icon-width);
+	padding: 4px;
+	text-align: center;
 }
-.curtain-fade-out {
+
+.closed-curtain {
+	transition: background-color var(--transition-time), z-index var(--transition-time) step-end;
+	z-index: -1;
+	background-color: transparent;
+}
+.opened-curtain {
 	transition: background-color var(--transition-time), z-index var(--transition-time) step-start;
+	z-index: 1;
+	background-color: rgb(0 0 0 / .6);
 }
 #curtain {
 	/* curtain starts off invisible and uninteractive */
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	z-index: -1;
-	background-color: transparent;
 }
 
 
@@ -74,13 +86,15 @@ button {
 		background-color: darkgrey;
 	}
 
-
+.closed-menu {
+	transform: translateX(-100%);
+}
+.opened-menu {
+	transform: translateX(0);
+}
 #menu {
 	display: block;
 	height: 100%;
-
-	/* menu starts out-of-screen to the left */
-	transform: translateX(-100%);
 
 	/* menu appears as an overlay */
 	position: absolute;
