@@ -50,10 +50,6 @@ function uploadFile() {
 	const ulInput = document.createElement('input');
 	ulInput.type = 'file';
 	ulInput.style.display = 'none';
-	const readFile = function() {
-		ulInput.files[0].text()
-			.then((data) => {filecontent.textContent = data;}, () => {throw new Error();});
-	}
 	ulInput.addEventListener('change', e => {
 		e.target.files[0].text()
 			.then(
@@ -69,5 +65,5 @@ function uploadFile() {
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
-savefile.addEventListener('click', downloadFile);
-openfile.addEventListener('click', uploadFile);
+savefile.addEventListener('click', () => { downloadFile(); closeMenu(); });
+openfile.addEventListener('click', () => { uploadFile(); closeMenu(); });
