@@ -7,6 +7,7 @@ const menuClose = document.getElementById('menu-close');
 const filecontent = document.getElementById('filecontent');
 const filename = document.getElementById('filename');
 const savefile = document.getElementById('menu-save');
+const openfile = document.getElementById('menu-open');
 
 let isMenuOpen = false;
 
@@ -45,7 +46,28 @@ function downloadFile() {
 	URL.revokeObjectURL(blobUri);
 }
 
+function uploadFile() {
+	const ulInput = document.createElement('input');
+	ulInput.type = 'file';
+	ulInput.style.display = 'none';
+	const readFile = function() {
+		ulInput.files[0].text()
+			.then((data) => {filecontent.textContent = data;}, () => {throw new Error();});
+	}
+	ulInput.addEventListener('change', e => {
+		e.target.files[0].text()
+			.then(
+				dataAsText => { filecontent.textContent = dataAsText },
+				() => { throw new Error('file access error') }
+			);
+	});
+	document.body.appendChild(ulInput);
+	ulInput.click();
+	document.body.removeChild(ulInput);
+}
+
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
 savefile.addEventListener('click', downloadFile);
+openfile.addEventListener('click', uploadFile);
