@@ -47,19 +47,29 @@ function downloadFile() {
 }
 
 function uploadFile() {
-	const ulInput = document.createElement('input');
-	ulInput.type = 'file';
-	ulInput.style.display = 'none';
-	ulInput.addEventListener('change', e => {
-		e.target.files[0].text()
-			.then(
-				dataAsText => { filecontent.textContent = dataAsText },
-				() => { throw new Error('file access error') }
-			);
+	// screens uploaded file content and updates file name and content fields
+	function handleFile(fileName, text) {
+		filename.value = fileName;
+		filecontent.value = text;
+	}
+
+	// create temporary file input element in DOM
+	const fileInput = document.createElement('input');
+	fileInput.type = 'file';
+	fileInput.style.display = 'none';
+
+	// add listener to trigger file reading code
+	fileInput.addEventListener('change', e => {
+		const chosenFile = e.target.files[0];
+		chosenFile.text().then(
+			text => { handleFile(chosenFile.name, text); },
+			() => { throw new Error('file access error') }
+		);
 	});
-	document.body.appendChild(ulInput);
-	ulInput.click();
-	document.body.removeChild(ulInput);
+	
+	document.body.appendChild(fileInput);
+	fileInput.click();
+	document.body.removeChild(fileInput);
 }
 
 menubutton.addEventListener('click', openMenu);
