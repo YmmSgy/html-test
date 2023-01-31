@@ -11,6 +11,23 @@ const openfile = document.getElementById('menu-open');
 
 let isMenuOpen = false;
 
+function printCodePoints(str16) {
+	let output = '';
+	for (const codePoint of str16) {
+		// get string representation of code point in hex
+		let codePtStr = codePoint.codePointAt(0).toString(16).toUpperCase();
+
+		// pad with leading zeros
+		for (let j = 0; codePtStr.length < 6; j++) {
+			codePtStr = '0' + codePtStr;
+		}
+
+		// concat to existing output
+		output += `${codePtStr} `;
+	}
+	console.log(output);
+}
+
 function openMenu() {
 	isMenuOpen = true;
 
@@ -49,6 +66,10 @@ function downloadFile() {
 function uploadFile() {
 	// screens uploaded file content and updates file name and content fields
 	function handleFile(fileName, text) {
+		// remove any terminating newline
+		if (text.endsWith('\r\n')) { text = text.slice(0, -2); }
+		else if (text.endsWith('\n')) { text = text.slice(0, -1); }
+
 		filename.value = fileName;
 		filecontent.value = text;
 	}
