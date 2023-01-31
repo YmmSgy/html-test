@@ -8,6 +8,7 @@ const filecontent = document.getElementById('filecontent');
 const filename = document.getElementById('filename');
 const savefile = document.getElementById('menu-save');
 const openfile = document.getElementById('menu-open');
+const changetheme = document.getElementById('menu-dark');
 
 let isMenuOpen = false;
 
@@ -93,8 +94,37 @@ function uploadFile() {
 	document.body.removeChild(fileInput);
 }
 
+function toggleTheme() {
+	// toggle the dark theme class and update localstorage accordingly
+	const isDarkTheme = document.documentElement.classList.toggle('dark-theme');
+	localStorage.setItem('theme-selected', isDarkTheme ? 'dark' : 'light');
+}
+
+function detectTheme() {
+	const htmlClass = document.documentElement.classList;
+
+	// use previously selected theme if possible
+	// otherwise check browser's preference with media query
+	const selectedTheme = localStorage.getItem('theme-selected');
+	if (selectedTheme === 'dark') {
+		htmlClass.toggle('dark-theme', true);
+	}
+	else if (selectedTheme === 'light') {
+		htmlClass.toggle('dark-theme', false);
+	}
+	else if (matchMedia('(prefers-color-scheme: dark)').matches) {
+		htmlClass.toggle('dark-theme', true);
+	}
+	else {
+		htmlClass.toggle('dark-theme', false);
+	}
+}
+
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
 savefile.addEventListener('click', () => { downloadFile(); closeMenu(); });
 openfile.addEventListener('click', () => { uploadFile(); closeMenu(); });
+changetheme.addEventListener('click', () => { toggleTheme(); closeMenu(); });
+
+detectTheme();

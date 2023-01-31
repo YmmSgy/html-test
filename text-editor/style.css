@@ -2,6 +2,19 @@
 	--banner-height: 2.5rem;
 	--transition-time: 0.3s;
 	--icon-width: 2rem;
+
+	--bg-colour: white;
+	--font-colour: black;
+	--banner-colour: silver;
+	--menu-colour: gainsboro;
+	--hl-colour: rgb(0 0 0 / .1);
+}
+:root.dark-theme {
+	--bg-colour: black;
+	--font-colour: gainsboro;
+	--banner-colour: rgb(60 60 70);
+	--menu-colour: rgb(40 40 50);
+	--hl-colour: rgb(255 255 255 / .1);
 }
 
 * {
@@ -10,6 +23,7 @@
 	border: none;
 	outline: none;
 	transition: all var(--transition-time);
+	color: var(--font-colour);
 }
 html, body {
 	height: 100%;
@@ -60,8 +74,11 @@ button {
 	display: flex;
 
 	/* colour & font */
-	background-color: silver;
+	background-color: var(--banner-colour);
 	font-size: 1rem;
+}
+#banner > *:hover {
+	background-color: var(--hl-colour);
 }
 	#menubutton {
 		/* menu button is a square (fixed width) */
@@ -81,9 +98,6 @@ button {
 		/* colour & font */
 		background-color: transparent;
 		font-size: inherit;
-	}
-	#filename:hover {
-		background-color: darkgrey;
 	}
 
 .closed-menu {
@@ -105,7 +119,7 @@ button {
 	padding-inline-start: 0;
 
 	/* colour & font */
-	background-color: gainsboro;
+	background-color: var(--menu-colour);
 }
 	#menu > li > * {
 		/* each menu button */
@@ -120,7 +134,7 @@ button {
 		font-size: 1rem;
 	}
 	#menu > li > *:hover {
-		background-color: silver;
+		background-color: var(--hl-colour);
 	}
 
 
@@ -132,8 +146,9 @@ button {
 	#filecontent {
 		/* file content textbox */
 		flex: auto;
-		border: solid 0.5rem white;
+		border: solid 0.5rem var(--bg-colour);
 		white-space: pre;
 		resize: none;
 		overflow: auto;
+		background-color: var(--bg-colour);
 	}
