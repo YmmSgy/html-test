@@ -13,11 +13,12 @@
 	--bg-colour: black;
 	--font-colour: gainsboro;
 	--banner-colour: rgb(60 60 70);
-	--menu-colour: rgb(40 40 50);
+	--menu-colour: rgb(40 40 45);
 	--hl-colour: rgb(255 255 255 / .1);
 }
 
 * {
+	/* universal default styles */
 	box-sizing: border-box;
 	margin: 0;
 	border: none;
@@ -35,10 +36,18 @@ body {
 	flex-direction: column;
 }
 button {
+	/* override user agent styling for buttons */
+	display: block;
 	cursor: pointer;
+}
+.menu {
+	/* override user agent styling for custom menus */
+	list-style-type: none;
+	padding-inline-start: 0;
 }
 
 .icon {
+	/* ??? */
 	font-style: normal;
 	display: inline-block;
 	height: var(--icon-width);
@@ -46,6 +55,7 @@ button {
 	padding: 4px;
 	text-align: center;
 }
+
 
 .closed-curtain {
 	transition: background-color var(--transition-time), z-index var(--transition-time) step-end;
@@ -77,9 +87,10 @@ button {
 	background-color: var(--banner-colour);
 	font-size: 1rem;
 }
-#banner > *:hover {
-	background-color: var(--hl-colour);
-}
+	#banner > *:hover {
+		/* highlight banner items on pointer hover */
+		background-color: var(--hl-colour);
+	}
 	#menubutton {
 		/* menu button is a square (fixed width) */
 		flex: none;
@@ -100,6 +111,7 @@ button {
 		font-size: inherit;
 	}
 
+
 .closed-menu {
 	transform: translateX(-100%);
 }
@@ -115,8 +127,6 @@ button {
 	z-index: 2;
 	overflow-x: hidden;
 	overflow-y: auto;
-	list-style-type: none;
-	padding-inline-start: 0;
 
 	/* colour & font */
 	background-color: var(--menu-colour);
@@ -151,4 +161,45 @@ button {
 		resize: none;
 		overflow: auto;
 		background-color: var(--bg-colour);
+	}
+
+
+#symbar {
+	/* symbar is fixed height */
+	flex: none;
+	height: var(--banner-height);
+	
+	/* horizontal flex container */
+	display: flex;
+	overflow: auto;
+
+	/* colour & font */
+	background-color: var(--banner-colour);
+	font-size: 1rem;
+}
+	#symbar > li {
+		flex: none;
+	}
+	#symbar > li > *:active {
+		/* highlight symbar items on click */
+		background-color: var(--hl-colour);
+		transition: all 0.1s;
+	}
+	#symbar > li > * {
+		/* button fills height */
+		height: 100%;
+
+		/* button has min & max width */
+		min-width: var(--banner-height);
+		max-width: calc(3*var(--banner-height));
+
+		/* in case of overflow */
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		/* colour & font */
+		background-color: transparent;
+		font-size: inherit;
+		transition: all 0.1s;
 	}

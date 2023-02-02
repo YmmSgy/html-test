@@ -9,21 +9,33 @@
   <body>
     <div id="curtain" class="closed-curtain"></div>
     <div id="banner">
-      <button id="menubutton">≡</button>
+      <button type="button" id="menubutton">≡</button>
       <input type="text" id="filename" value="unknown.txt">
     </div>
-    <ul id="menu" class="closed-menu">
-      <li><button id="menu-close">╳</button></li>
-      <li><button id="menu-save">Save file</button></li>
-      <li><button id="menu-open">Open file</button></li>
-      <li><button id="menu-dark">Switch theme</button></li>
-      <li><button id="menu-font">Font size</button></li>
-      <li><button id="menu-hl">Syntax highlighting</button></li>
-      <li><button id="menu-indent">Auto indenting</button></li>
+    <ul id="menu" class="menu closed-menu">
+      <li><button type="button" id="menu-close">╳</button></li>
+      <li><button type="button" id="menu-save">Save file</button></li>
+      <li><button type="button" id="menu-open">Open file</button></li>
+      <li><button type="button" id="menu-dark">Switch theme</button></li>
+      <li><button type="button" id="menu-font">Font size</button></li>
+      <li><button type="button" id="menu-hl">Syntax highlighting</button></li>
+      <li><button type="button" id="menu-indent">Auto indenting</button></li>
     </ul>
     <div id="content">
       <textarea id="filecontent" spellcheck="false" autofocus></textarea>
     </div>
+    <ul id="symbar" class="menu">
+      <li><button type="button" id="symbar-tab">&#x21B9;</button></li>
+      <li><button type="button" id="symbar-bksl">\</button></li>
+      <li><button type="button" id="symbar-btick">`</button></li>
+      <li><button type="button" id="symbar-tilde">~</button></li>
+      <li><button type="button" id="symbar-lt">&lt;</button></li>
+      <li><button type="button" id="symbar-gt">&gt;</button></li>
+      <li><button type="button" id="symbar-lcurly">{</button></li>
+      <li><button type="button" id="symbar-rcurly">}</button></li>
+      <li><button type="button" id="symbar-lsqr">[</button></li>
+      <li><button type="button" id="symbar-rsqr">]</button></li>
+    </ul>
     <!-- script -->
     <script blocking="render" src="script.js"></script>
   </body>

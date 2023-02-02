@@ -9,6 +9,20 @@ const filename = document.getElementById('filename');
 const savefile = document.getElementById('menu-save');
 const openfile = document.getElementById('menu-open');
 const changetheme = document.getElementById('menu-dark');
+const symbar = document.getElementById('symbar');
+
+const symbarBindings = {
+	symbar_tab:		'\t',
+	symbar_bksl:	'\\',
+	symbar_btick:	'`',
+	symbar_tilde:	'~',
+	symbar_lt:		'<',
+	symbar_gt:		'>',
+	symbar_lcurly:	'{',
+	symbar_rcurly:	'}',
+	symbar_lsqr:	'[',
+	symbar_rsqr:	']'
+}
 
 let isMenuOpen = false;
 
@@ -27,6 +41,15 @@ function printCodePoints(str16) {
 		output += `${codePtStr} `;
 	}
 	console.log(output);
+}
+
+function spliceString(str, start, rmCount, insStr) {
+	// similar to Array.splice(): starting at index start, removes rmCount
+	// characters (UTF-16 code units), and inserts insStr at start
+	// returns the new string without modifying str
+	if (typeof str !== 'string') return str;
+	if (rmCount !== 0) rmCount ||= Infinity;
+	return str.slice(0, start) + (insStr || '') + str.slice(start + rmCount);
 }
 
 function openMenu() {
@@ -120,11 +143,32 @@ function detectTheme() {
 	}
 }
 
+function insertSymbol(e) {
+	let symId = e.target.id;
+	
+	// ensure that we are handling the click of a valid button
+	if (!symId.startsWith('symbar-')) return;
+
+	// replace dashes with underscores (no dashes in property names)
+	symId = symId.replaceAll('-', '_');
+
+	// lookup symbar bindings with key symId for value to insert
+	const ch = symbarBindings[symId];
+
+	// don't insert if lookup fails (ch is undefined)
+	if (ch === undefined) return;	/* handle error */
+
+	// insert ch and return focus to file content
+	filecontent.setRangeText(ch, filecontent.selectionStart, filecontent.selectionEnd, 'end');
+	filecontent.focus();
+}
+
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
 savefile.addEventListener('click', () => { downloadFile(); closeMenu(); });
 openfile.addEventListener('click', () => { uploadFile(); closeMenu(); });
 changetheme.addEventListener('click', () => { toggleTheme(); closeMenu(); });
+symbar.addEventListener('click', insertSymbol);
 
 detectTheme();
