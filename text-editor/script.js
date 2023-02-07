@@ -156,11 +156,17 @@ function insertSymbol(e) {
 	const ch = symbarBindings[symId];
 
 	// don't insert if lookup fails (ch is undefined)
-	if (ch === undefined) return;	/* handle error */
+	if (ch === undefined) return;	// handle error
 
 	// insert ch and return focus to file content
 	filecontent.setRangeText(ch, filecontent.selectionStart, filecontent.selectionEnd, 'end');
 	filecontent.focus();
+}
+
+function adaptVirtualKbd() {
+	// opt in to virtual keyboard management, if API is available
+	if ('virtualKeyboard' in navigator)
+		navigator.virtualKeyboard.overlaysContent = true;
 }
 
 menubutton.addEventListener('click', openMenu);
@@ -171,4 +177,5 @@ openfile.addEventListener('click', () => { uploadFile(); closeMenu(); });
 changetheme.addEventListener('click', () => { toggleTheme(); closeMenu(); });
 symbar.addEventListener('click', insertSymbol);
 
+adaptVirtualKbd();
 detectTheme();

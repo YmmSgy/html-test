@@ -34,6 +34,9 @@ body {
 	/* main display is a flex container */
 	display: flex;
 	flex-direction: column;
+
+	/* disable pull-to-refresh */
+	overscroll-behavior: contain;
 }
 button {
 	/* override user agent styling for buttons */
@@ -176,6 +179,9 @@ button {
 	/* colour & font */
 	background-color: var(--banner-colour);
 	font-size: 1rem;
+
+	/* transition */
+	transition: none;
 }
 	#symbar > li {
 		flex: none;
@@ -203,3 +209,11 @@ button {
 		font-size: inherit;
 		transition: all 0.1s;
 	}
+
+
+#kbdplaceholder {
+	flex: none;
+	height: env(keyboard-inset-height, 0);
+	background-color: var(--bg-colour);
+	transition: none;
+}
