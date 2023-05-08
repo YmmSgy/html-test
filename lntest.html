@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  <link rel="stylesheet" href=".css">  -->
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: none;
+      }
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+      .flexc-vert {
+        display: flex;
+        flex-flow: column nowrap;
+      }
+      .flexc-hori {
+        display: flex;
+        flex-flow: row nowrap;
+      }
+      .flex-none {
+        flex: none;
+      }
+      .flex-flexy {
+        flex: auto;
+      }
+      .flex-sizeless {
+        flex: 1 1 0;
+      }
+      .matchparent {
+        width: 100%;
+        height: 100%;
+      }
+      #side {
+        white-space: pre;
+        font-family: monospace;
+        font-size: 1rem;
+        background-color: aquamarine;
+      }
+      #textwrapper {
+        position: relative;
+      }
+      #textdisp {
+        white-space: pre;
+        font-family: monospace;
+        font-size: 1rem;
+        background-color: chocolate;
+      }
+      #text {
+        position: absolute;
+        top: 0;
+
+        display: block;
+        resize: none;
+
+        white-space: pre;
+        font-family: monospace;
+        font-size: 1rem;
+        color: transparent;
+        caret-color: black;
+        background-color: transparent;
+      }
+    </style>
+    <title>Page Title</title>
+  </head>
+  <body>
+    <p>Hello, World!</p>
+    <div class="flexc-hori">
+      <div id="side" class="flex-none">1&#10;2&#10;3&#10;4</div>
+      <div id="textwrapper" class="flex-flexy">
+        <pre id="textdisp" class="matchparent"></pre>
+        <textarea id="text" class="matchparent" spellcheck="false"></textarea>
+      </div>
+    </div>
+
+    <script>
+      'use strict';
+      const side = document.getElementById('side');
+      const text = document.getElementById('text');
+      const textdisp = document.getElementById('textdisp');
+
+      text.addEventListener('input', e => {
+        textdisp.innerText = e.target.value + '\u200B';
+        let str = '1';
+        let nlCounter = 1;
+        for (const ch of e.target.value) {
+          if (ch === '\n') str += `\n${++nlCounter}`;
+        }
+        side.innerText = str;
+      });
+    </script>
+    <!--  <script src=".js"></script>  -->
+  </body>
+</html>

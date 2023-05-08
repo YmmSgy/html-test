@@ -2,6 +2,7 @@
 	--banner-height: 2.5rem;
 	--transition-time: 0.3s;
 	--icon-width: 2rem;
+	--font-content: 1rem monospace;
 
 	--bg-colour: white;
 	--font-colour: black;
@@ -153,18 +154,60 @@ button {
 
 #content {
 	/* content area fills remaining space */
-	flex: auto;
+	flex: 1;
 	display: flex;
+	flex-flow: row nowrap;
+	align-items: flex-start;
+	min-height: 0;
+	overflow: auto;
+	background-color: var(--bg-colour);
 }
-	#filecontent {
-		/* file content textbox */
-		flex: auto;
-		border: solid 0.5rem var(--bg-colour);
-		white-space: pre;
-		resize: none;
-		overflow: auto;
+	#lineno {
+		position: sticky;
+		z-index: 1;
+		left: 0;
+		flex: none;
+		min-height: 100%;
+
+		padding: 0 0.4rem 0 0.2rem;
+		font: var(--font-content);
+		border-right: 1px solid var(--banner-colour);
 		background-color: var(--bg-colour);
 	}
+	#textwrapper {
+		position: relative;
+		flex: 1;
+		min-height: 100%;
+	}
+		#textdisp {
+			padding: 0;
+			font: var(--font-content);
+			color: var(--font-colour);
+
+			min-height: 1rem;
+			min-width: 100%;
+
+			background-color: var(--bg-colour);
+		}
+		#filecontent {
+			/* file content textbox */
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 0;
+			font: var(--font-content);
+			color: transparent;
+			overflow: hidden;
+
+			width: 100%;
+			height: 100%;
+
+			white-space: pre;
+			resize: none;
+			background-color: transparent;
+			caret-color: var(--font-colour);
+			transition: none;
+		}
 
 
 #symbar {

@@ -10,6 +10,9 @@ const savefile = document.getElementById('menu-save');
 const openfile = document.getElementById('menu-open');
 const changetheme = document.getElementById('menu-dark');
 const symbar = document.getElementById('symbar');
+const lineNo = document.getElementById('lineno');
+const dispText = document.getElementById('textdisp');
+const textWrapper = document.getElementById('textwrapper');
 
 const symbarBindings = {
 	symbar_tab:		'\t',
@@ -156,7 +159,7 @@ function insertSymbol(e) {
 	const ch = symbarBindings[symId];
 
 	// don't insert if lookup fails (ch is undefined)
-	if (ch === undefined) return;	// handle error
+	if (ch === undefined) return;	// TODO: handle error
 
 	// insert ch and return focus to file content
 	filecontent.setRangeText(ch, filecontent.selectionStart, filecontent.selectionEnd, 'end');
@@ -169,6 +172,24 @@ function adaptVirtualKbd() {
 		navigator.virtualKeyboard.overlaysContent = true;
 }
 
+function updateDisplayText(e) {
+	dispText.innerText = e.target.value + '\u200B';
+}
+
+function updateLineNos(e) {
+	let str = '1';
+	let nlCounter = 1;
+	for (const ch of e.target.value) {
+		if (ch === '\n') str += `\n${++nlCounter}`;
+	}
+	lineNo.innerText = str;
+}
+
+function resizeTextarea(entries) {
+	filecontent.style.width = `${entries[0].borderBoxSize[0].inlineSize}px`;
+	filecontent.style.height = `${entries[0].borderBoxSize[0].blockSize}px`;
+}
+
 menubutton.addEventListener('click', openMenu);
 menuClose.addEventListener('click', closeMenu);
 curtain.addEventListener('click', closeMenu);
@@ -176,6 +197,9 @@ savefile.addEventListener('click', () => { downloadFile(); closeMenu(); });
 openfile.addEventListener('click', () => { uploadFile(); closeMenu(); });
 changetheme.addEventListener('click', () => { toggleTheme(); closeMenu(); });
 symbar.addEventListener('click', insertSymbol);
+filecontent.addEventListener('input', (e) => { updateDisplayText(e); updateLineNos(e); });
+textWrapper.addEventListener('click', () => { filecontent.focus(); });
+(new ResizeObserver(resizeTextarea)).observe(dispText);
 
 adaptVirtualKbd();
 detectTheme();
